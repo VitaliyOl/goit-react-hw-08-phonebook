@@ -28,6 +28,8 @@ const handleSuccessDelete = (state, { payload }) => {
 };
 
 const handleSuccessAdd = (state, { payload }) => {
+  console.log(state);
+  console.log(payload);
   state.items.push(payload);
   utilsStateFnct(state);
 };
@@ -38,7 +40,7 @@ const HandleError = (state, { payload }) => {
 };
 
 export const contactsSlice = createSlice({
-  name: 'contact',
+  name: 'contacts',
   initialState,
   extraReducers: builder =>
     builder
