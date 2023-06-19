@@ -2,6 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
 import { GlobalStyle } from 'styles/GlobalStyles';
 import { Container } from './App.styled';
+import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 import Layout from './Layout/Layout';
 import { useDispatch } from 'react-redux';
@@ -43,6 +45,7 @@ export const App = () => {
           <Route path="/register" element={ <RestrictedRoutes component={<Register />} redirectTo="/login" />} />
         </Route>
       </Routes>
+      <ToastContainer/>
       <GlobalStyle />
     </Container>
   );
