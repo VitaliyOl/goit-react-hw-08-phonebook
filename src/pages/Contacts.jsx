@@ -16,7 +16,9 @@ function Contacts() {
 
   
   return (
-    <>
+    <div style={{ display: 'block',
+      marginLeft: 'auto',
+      marginRight: 'auto'  }}>
       <h1>Phonebook</h1>
       <ContactsForm />
       <h2>Contacts</h2>
@@ -28,7 +30,7 @@ function Contacts() {
       )}
       {error && <b>{error}</b>}
       <ContactsList />
-    </>
+    </div>
   );
 }
 

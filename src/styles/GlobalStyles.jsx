@@ -79,7 +79,7 @@ export const GlobalStyle = createGlobalStyle`
 
   main {
     display: flex;
-    flex-direction: column;
+    ${'' /* flex-direction: column; */}
     justify-content: center;
     ${'' /* align-items: center; */}
     ${'' /* flex: 1 1 auto; */}

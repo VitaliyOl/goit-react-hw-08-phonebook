@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const fetchContacts = createAsyncThunk(
   'contact/fetchAll',
@@ -19,6 +20,7 @@ export const addContact = createAsyncThunk(
     console.log(contact);
     try {
       const { data } = await axios.post('/contacts', contact);
+      toast.success('Add contact');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -31,6 +33,7 @@ export const deleteContact = createAsyncThunk(
   async (contactsId, { rejectWithValue }) => {
     try {
       const { data } = await axios.delete(`/contacts/${contactsId}`);
+      toast.success('Delete contact');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -38,40 +41,6 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-// export const fetchContacts = createAsyncThunk(
-//   'contact/getContacts',
-//   async (_, thunkAPI) => {
-//     try {
-//       const { data } = await axios.get('/contacts');
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
-// export const addContact = createAsyncThunk(
-//   'contact/addContact',
-//   async (contact, thunkAPI) => {
-//     try {
-//       const { data } = await axios.post('/contacts', contact);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-// export const deleteContact = createAsyncThunk(
-//   'contact/deleteContact',
-//   async (contactsId, thunkAPI) => {
-//     try {
-//       const { data } = await axios.delete(`/contacts/${contactsId}`);
-//       return data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 

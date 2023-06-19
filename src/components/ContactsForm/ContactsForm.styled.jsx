@@ -4,10 +4,12 @@ import { Form, ErrorMessage } from 'formik';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 540px;
+  width: 540px;
   border: 1px solid black;
   padding: 20px;
   font-size: 20px;
+  border-radius: 15px;
+  margin-bottom: 10px;
 `;
 
 export const Forms = styled(Form)`

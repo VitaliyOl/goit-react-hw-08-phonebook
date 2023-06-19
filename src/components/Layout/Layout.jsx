@@ -1,4 +1,4 @@
-import { AppBar } from 'components/AppBar/AppBar';
+import { AppBarr } from 'components/AppBar/AppBarr';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 // import { Header, NavHeader, StyledLink } from './Layout.styled';
@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 function Layout() {
   return (
     <>
-      <AppBar />
+      <AppBarr />
 
       <Suspense fallback={null}>
         <main>

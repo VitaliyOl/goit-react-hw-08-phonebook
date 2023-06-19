@@ -26,7 +26,7 @@ export function RegisterForm() {
   };
 
   return (
-    <div style={{ display: 'flex', width: '540px' }}>
+    <div style={{ width: '540px' }}>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -37,7 +37,7 @@ export function RegisterForm() {
           <ErrorMessage name="name" component="span" />
           <Field as={TextField} label="Email" type="email" name="email" />
           <ErrorMessage name="email" component="span" />
-          <Field as={TextField} label="Password" type="text" name="password" />
+          <Field as={TextField} label="Password" type="password" name="password" />
           <ErrorMessage name="password" component="span" />
 
           <Button variant="outlined" type="submit">

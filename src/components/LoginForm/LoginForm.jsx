@@ -4,6 +4,8 @@ import { loginSchema } from 'components/schema/schema';
 import { ErrorMessage, Field, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/operations';
+import { Container } from './LoginForm.styled';
+
 
 const initialValues = {
   email: '',
@@ -18,7 +20,7 @@ export function LoginForm() {
     resetForm();
   };
   return (
-    <div style={{ display: 'flex', width: '540px' }}>
+    <Container>
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -27,13 +29,13 @@ export function LoginForm() {
         <Forms>
           <Field as={TextField} label="Email" type="email" name="email" />
           <ErrorMessage name="email" component="span" />
-          <Field as={TextField} label="Password" type="text" name="password" />
+          <Field as={TextField} label="Password" type="password" name="password" />
           <ErrorMessage name="password" component="span" />
           <Button variant="outlined" type="submit">
             Login
           </Button>
         </Forms>
       </Formik>
-    </div>
+    </Container>
   );
 }

@@ -5,16 +5,19 @@ export const NavHeader = styled.nav`
   display: flex;
   justify-content: flex-start;
   column-gap: 30px;
+  align-items: center;
 `;
 
 export const StyledLink = styled(NavLink)`
   padding-top: 16px;
-  padding-bottom: 16px;
-
+  padding-bottom: 16px; 
+  color: #ffae00;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 500;  
 
   &.active {
-    color: tomato;
+    color: white;
   }
 `;
+
+
