@@ -16,9 +16,7 @@ export const loginSchema = yup.object().shape({
   email: yup.string().email().required('Please enter email'),
   password: yup
     .string()
-    .required('No password provided.')
-    .min(3, 'Password is too short - should be 8 chars minimum.')
-    .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
+    .required('No password provided.')   
 });
 
 export const registerSchema = yup.object().shape({

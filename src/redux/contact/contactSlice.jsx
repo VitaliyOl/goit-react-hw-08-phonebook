@@ -1,8 +1,8 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import { fetchContacts, addContact, deleteContact, changeContact} from './operations';
 
-const fetchArr = [fetchContacts, addContact, deleteContact];
+const fetchArr = [fetchContacts, addContact, deleteContact, changeContact];
 
 const fnctAddMatcher = status => {
   return fetchArr.map(el => el[status]);
@@ -27,9 +27,7 @@ const handleSuccessDelete = (state, { payload }) => {
   utilsStateFnct(state);
 };
 
-const handleSuccessAdd = (state, { payload }) => {
-  console.log(state);
-  console.log(payload);
+const handleSuccessAdd = (state, { payload }) => {  
   state.items.push(payload);
   utilsStateFnct(state);
 };
@@ -37,6 +35,13 @@ const handleSuccessAdd = (state, { payload }) => {
 const HandleError = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
+};
+
+const handleFulfilledChange = (state, { payload }) => {
+  const index = state.items.findIndex(({ id }) => id === payload.id);
+  if (index !== -1) {
+    state.items[index] = payload;
+  }
 };
 
 export const contactsSlice = createSlice({
@@ -47,7 +52,8 @@ export const contactsSlice = createSlice({
       .addCase(fetchContacts.fulfilled, handleSuccess)
       .addCase(addContact.fulfilled, handleSuccessAdd)
       .addCase(deleteContact.fulfilled, handleSuccessDelete)
-      .addMatcher(isAnyOf(...fnctAddMatcher('pending')), handleFulfield)
+      .addCase(changeContact.fulfilled, handleFulfilledChange)
+      .addMatcher(isAnyOf(...fnctAddMatcher('pending')), handleFulfield)      
       .addMatcher(isAnyOf(...fnctAddMatcher('rejected')), HandleError),
 });
 
