@@ -32,6 +32,7 @@ const handleSuccessAdd = (state, { payload }) => {
   utilsStateFnct(state);
 };
 
+
 const HandleError = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
@@ -42,6 +43,7 @@ const handleFulfilledChange = (state, { payload }) => {
   if (index !== -1) {
     state.items[index] = payload;
   }
+  utilsStateFnct(state);
 };
 
 export const contactsSlice = createSlice({

@@ -44,11 +44,13 @@ export const deleteContact = createAsyncThunk(
 
 export const changeContact = createAsyncThunk(
   'contact/editContact',
-  async (contact, { rejectWithValue }) => {
+  async (contact, { rejectWithValue }) => {   
     try {
-      const { data } = await axios.patch(`/contacts/${contact.id}`, contact);
-      toast.success('Contact update');
-      console.log(data);
+      const { data } = await axios.patch(`/contacts/${contact.id}`, {
+        name: contact.name,
+        number: contact.number,
+      });     
+      toast.success('Contact update');      
       return data;
     } catch ({ response }) {
       return rejectWithValue(`Something wrong, try again`);
