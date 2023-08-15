@@ -5,7 +5,7 @@ import { ErrorMessage, Field, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { login } from 'redux/auth/operations';
 import { Container } from './LoginForm.styled';
-
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   email: '',
@@ -14,6 +14,7 @@ const initialValues = {
 
 export function LoginForm() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(login({ email: values.email, password: values.password }));
@@ -27,12 +28,17 @@ export function LoginForm() {
         validationSchema={loginSchema}
       >
         <Forms>
-          <Field as={TextField} label="Email" type="email" name="email" />
+          <Field as={TextField} label={t('Email')} type="email" name="email" />
           <ErrorMessage name="email" component="span" />
-          <Field as={TextField} label="Password" type="password" name="password" />
+          <Field
+            as={TextField}
+            label={t('Password')}
+            type="password"
+            name="password"
+          />
           <ErrorMessage name="password" component="span" />
           <Button variant="outlined" type="submit">
-            Login
+            {t('Login')}
           </Button>
         </Forms>
       </Formik>

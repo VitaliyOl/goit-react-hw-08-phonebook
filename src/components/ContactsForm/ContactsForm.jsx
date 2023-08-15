@@ -5,13 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getContact } from 'redux/contact/selectors';
 import { addContact } from 'redux/contact/operations';
 import { schema } from 'components/schema/schema';
+import { useTranslation } from 'react-i18next';
 
 const initialValues = { name: '', number: '' };
 
 export const ContactsForm = () => {
   const contacts = useSelector(getContact);
   const dispatch = useDispatch();
-  
+
+  const { t } = useTranslation();
 
   const handleAddContact = ({ name, number }) => {
     contacts.items.filter(contact => contact.name === name).length
@@ -32,13 +34,13 @@ export const ContactsForm = () => {
         validationSchema={schema}
       >
         <Forms>
-          <Field as={TextField} label="Name" type="text" name="name" />
+          <Field as={TextField} label={t('Name')} type="text" name="name" />
           <Error name="name" component="span" />
 
-          <Field as={TextField} label="Number" type="tel" name="number" />
+          <Field as={TextField} label={t('Number')} type="tel" name="number" />
           <Error name="number" component="span" />
 
-          <FormButton type="submit">Add contact</FormButton>
+          <FormButton type="submit">{t('Add contact')}</FormButton>
         </Forms>
       </Formik>
     </Container>

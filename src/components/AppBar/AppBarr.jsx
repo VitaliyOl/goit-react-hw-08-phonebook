@@ -9,21 +9,22 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 
+import LangToggle from '../Shared/Lang/LangToggle';
 
-export function AppBarr() { 
-
-  const { isLoggedIn } = useAuth(); 
+export function AppBarr() {
+  const { isLoggedIn } = useAuth();
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-     <Header>    
-    <AppBar position="static">
-    <Toolbar>   
-      <Navigation />
-      {isLoggedIn ?  <UserMenu /> : <AuthNav />}
-      </Toolbar>
-    </AppBar>
-    </Header>
+      <Header>
+        <LangToggle />
+        <AppBar position="static">
+          <Toolbar>
+            <Navigation />
+            {isLoggedIn ? <UserMenu /> : <AuthNav />}
+          </Toolbar>
+        </AppBar>
+      </Header>
     </Box>
   );
 }

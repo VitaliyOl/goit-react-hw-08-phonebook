@@ -4,6 +4,7 @@ import { registerSchema } from 'components/schema/schema';
 import { Forms } from 'components/ContactsForm/ContactsForm.styled';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   name: '',
@@ -13,6 +14,7 @@ const initialValues = {
 
 export function RegisterForm() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(
@@ -33,15 +35,20 @@ export function RegisterForm() {
         validationSchema={registerSchema}
       >
         <Forms>
-          <Field as={TextField} label="Name" type="text" name="name" />
+          <Field as={TextField} label={t('Name')} type="text" name="name" />
           <ErrorMessage name="name" component="span" />
-          <Field as={TextField} label="Email" type="email" name="email" />
+          <Field as={TextField} label={t('Email')} type="email" name="email" />
           <ErrorMessage name="email" component="span" />
-          <Field as={TextField} label="Password" type="password" name="password" />
+          <Field
+            as={TextField}
+            label={t('Password')}
+            type="password"
+            name="password"
+          />
           <ErrorMessage name="password" component="span" />
 
           <Button variant="outlined" type="submit">
-            Register
+            {t('Register')}
           </Button>
         </Forms>
       </Formik>

@@ -5,23 +5,23 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contact/operations';
 import { getContact } from 'redux/contact/selectors';
+import { useTranslation } from 'react-i18next';
 
 function Contacts() {
   const { isLoading, error } = useSelector(getContact);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  useEffect(()=>{
-    dispatch(fetchContacts())
-  },[dispatch])
+  const { t } = useTranslation();
 
-  
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
-    <div style={{ display: 'block',
-      marginLeft: 'auto',
-      marginRight: 'auto'  }}>
-      <h1>Phonebook</h1>
+    <div style={{ display: 'block', marginLeft: 'auto', marginRight: 'auto' }}>
+      <h1>{t('Phonebook')}</h1>
       <ContactsForm />
-      <h2>Contacts</h2>
+      <h2>{t('Contacts')}</h2>
       <Filter />
       {isLoading && (
         <div style={{ margin: '20px' }}>

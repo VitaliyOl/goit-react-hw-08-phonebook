@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Header = styled.header`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;

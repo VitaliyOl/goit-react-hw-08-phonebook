@@ -4,6 +4,7 @@ import { persistor, store } from './redux/store';
 import { Provider } from 'react-redux';
 import { App } from 'components/App';
 import './index.css';
+import './utils/langs/i18next';
 import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 

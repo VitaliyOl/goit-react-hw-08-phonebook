@@ -2,9 +2,11 @@ import { FilterInput } from './Filter.styled';
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
 import debounce from 'lodash.debounce';
+import { useTranslation } from 'react-i18next';
 
 export default function Filter() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleChange = e => {
     dispatch(setFilter(e.target.value));
@@ -14,7 +16,7 @@ export default function Filter() {
     <>
       <FilterInput
         type="text"
-        placeholder="search by name..."
+        placeholder={t('search by name')}
         onChange={debounce(handleChange, 500)}
       ></FilterInput>
     </>
